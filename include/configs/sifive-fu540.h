@@ -16,6 +16,15 @@
 
 #include <linux/sizes.h>
 
+/* no-dm macb hacks */
+#define HIFIVE_BASE_ETHERNET		0x10090000
+#define HIFIVE_BASE_MAC_MGMT		0x100a0000
+#define CONFIG_SYS_CLK_FREQ    		1000000000
+#define HIFIVE_ETHERNET_CLK_FREQ	(CONFIG_SYS_CLK_FREQ / 2)
+#define get_macb_pclk_rate(id) HIFIVE_ETHERNET_CLK_FREQ
+#define CONFIG_RESET_PHY_R
+
+
 #define CONFIG_SYS_SDRAM_BASE		0x80000000
 
 /* start from L2 cache sideband */

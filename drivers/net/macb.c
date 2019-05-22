@@ -45,7 +45,7 @@
 
 DECLARE_GLOBAL_DATA_PTR;
 
-#define MACB_RX_BUFFER_SIZE		4096
+#define MACB_RX_BUFFER_SIZE		4096u
 #define MACB_RX_RING_SIZE		(MACB_RX_BUFFER_SIZE / 128)
 #define MACB_TX_RING_SIZE		16
 #define MACB_TX_TIMEOUT		1000
@@ -567,7 +567,7 @@ static int macb_phy_init(struct macb_device *macb, const char *name)
 #else
 	/* need to consider other phy interface mode */
 	macb->phydev = phy_connect(macb->bus, macb->phy_addr, &macb->netdev,
-			     PHY_INTERFACE_MODE_RGMII);
+			     PHY_INTERFACE_MODE_GMII); //padmaPHY_INTERFACE_MODE_RGMII);
 #endif
 	if (!macb->phydev) {
 		printf("phy_connect failed\n");
@@ -800,7 +800,7 @@ static int _macb_init(struct macb_device *macb, const char *name)
 #ifdef CONFIG_AT91FAMILY
 	macb_writel(macb, USRIO, MACB_BIT(CLKEN));
 #else
-	macb_writel(macb, USRIO, MACB_BIT(MII));
+//	macb_writel(macb, USRIO, MACB_BIT(MII));
 #endif
 #endif /* CONFIG_RMII */
 #endif
@@ -1233,3 +1233,4 @@ U_BOOT_DRIVER(eth_macb) = {
 #endif
 
 #endif
+// SPDX-License-Identifier: GPL-2.0+

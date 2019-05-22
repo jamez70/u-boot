@@ -64,6 +64,7 @@ void reset_phy(void)
  * The RX_CLK, TX_CLK and RXD7 pins are strapped high and the remainder low.
  * This selects GMII mode with auto 10/100/1000 and 125MHz clkout.
  */
+#warning rewrite as gpio driver
     g_aloe_gpio->OUTPUT_EN  |= 0x00001000ul;  /* Configure pin 12 as an output */
     g_aloe_gpio->OUTPUT_VAL &= 0x0000EFFFul;  /* Clear pin 12 to reset PHY */
     for(loop = 0; loop != 1000; loop++)     /* Short delay, I'm not sure how much is needed... */
